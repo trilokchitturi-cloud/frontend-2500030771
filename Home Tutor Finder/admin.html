@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Home Tutor Finder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="brand"><h1>🎓 Admin Dashboard</h1></div>
+      <nav><button onclick="logout()">Logout</button></nav>
+    </div>
+  </header>
+  <main>
+    <div class="box">
+      <h3>Register a New Tutor</h3>
+      <input type="text" id="name" placeholder="Tutor Name">
+      <input type="text" id="subject" placeholder="Subject (e.g., Math)">
+      <input type="text" id="city" placeholder="City (e.g., Mumbai)">
+      <input type="number" id="rate" placeholder="Rate per hour (₹)">
+      <button class="btn-green" onclick="addTutor()">Add Tutor to Database</button>
+    </div>
+  </main>
+
+  <script>
+    // Security check: Make sure user is logged in and is an admin
+    const currentUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!currentUser || currentUser.role !== "admin") {
+      alert("Access Denied. Admins only.");
+      window.location.href = "index.html";
+    }
+
+    function addTutor() {
+      const name = document.getElementById("name").value;
+      const subject = document.getElementById("subject").value;
+      const city = document.getElementById("city").value;
+      const rate = document.getElementById("rate").value;
+
+      if (!name || !subject || !city || !rate) return alert("Fill all fields");
+
+      // Get existing tutors or default ones
+      let tutors = JSON.parse(localStorage.getItem("tutorsList")) || [];
+      
+      tutors.push({ name, subject, city, rate });
+      localStorage.setItem("tutorsList", JSON.stringify(tutors));
+      
+      alert("Tutor added successfully!");
+      
+      // Clear form
+      document.getElementById("name").value = "";
+      document.getElementById("subject").value = "";
+      document.getElementById("city").value = "";
+      document.getElementById("rate").value = "";
+    }
+
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

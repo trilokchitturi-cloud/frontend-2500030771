@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Home Tutor Finder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="brand"><h1>🎓 Home Tutor Finder</h1></div>
+      <nav><a href="signup.html">Sign Up</a></nav>
+    </div>
+  </header>
+  <main>
+    <div class="box">
+      <h3>Login</h3>
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+      <button onclick="login()">Login</button>
+    </div>
+  </main>
+  
+  <script>
+    function login() {
+      const u = document.getElementById("username").value;
+      const p = document.getElementById("password").value;
+      
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      
+      // Find matching user
+      const user = users.find(user => user.username === u && user.password === p);
+
+      if (user) {
+        // Save current logged in user
+        localStorage.setItem("loggedInUser", JSON.stringify(user));
+        
+        // Redirection Requirement
+        if (user.role === "admin") {
+          window.location.href = "admin.html";
+        } else {
+          window.location.href = "user.html";
+        }
+      } else {
+        alert("Invalid username or password");
+      }
+    }
+  </script>
+</body>
+</html>

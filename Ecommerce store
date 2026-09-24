@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce website</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to our Ecommerce website</h1>
+    </header>
+    
+    <h1>This is my Ecommerce website</h1>
+    <h2>Welcome to our shopEasy</h2>
+    <h3>Find the best products at the best prices</h3>
+    <h4>ShopEasy - your one-stop online store</h4>
+    <h5>Discover amazing deals and discounts</h5>
+    <h6>Contact us for any inquiries or support</h6>
+    
+    <div>
+        <p>Feel free to reach out to us if you have any questions or need assistance.</p>
+    </div>
+    
+    <p><b>This is my first paragraph</b></p>
+    <p><u>This is underlined text</u></p>
+    <p><i>This is italic text</i></p>
+    <p>H<sub>2</sub>O</p>
+</body>
+</html> 
