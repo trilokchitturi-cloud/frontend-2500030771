@@ -1,0 +1,67 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Registration</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: lightblue;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            width: 300px;
+            margin: 50px auto;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+<form onsubmit="register(event)">
+    <h2>Course Registration</h2>
+
+    <input type="text" id="name" placeholder="Student Name" required>
+
+    <input type="email" id="email" placeholder="Email" required>
+
+    <input type="text" id="roll" placeholder="Roll Number" required>
+
+    <select id="course" required>
+        <option value="">Select Course</option>
+        <option>HTML</option>
+        <option>CSS</option>
+        <option>JavaScript</option>
+        <option>Python</option>
+    </select>
+
+    <button type="submit">Register</button>
+
+    <p id="result"></p>
+</form>
+
+<script>
+function register(event) {
+    event.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let course = document.getElementById("course").value;
+
+    document.getElementById("result").innerHTML =
+        "Registration Successful!<br>" +
+        "Name: " + name + "<br>" +
+        "Course: " + course;
+}
+</script>
+
+</body>
+</html>
+```
